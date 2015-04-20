@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Read all gems
+GET		/gems						controllers.GemController.getGems()
+
+# Map static resources from the /public folder to the /assets URL path
+GET		/assets/html/*file			controllers.Assets.at(path="/public/html", file)
+GET		/assets/images/*file		controllers.Assets.at(path="/public/images", file)
+GET		/assets/stylesheets/*file	controllers.Assets.at(path="/public/stylesheets", file)
+GET		/assets/javascripts/*file	controllers.Assets.at(path="/public/javascripts", file)
+GET		/*file						controllers.Assets.at(path="/public", file)
+
+# Create
+POST 	/gem						controllers.GemController.storeGem()
+
+# Read
+GET		/gem/:id					controllers.GemController.getGem(id: Long)
+
+# Update
+PUT		/gem/:id					controllers.GemController.updateGem(id: Long)
+
+# Delete
+DELETE	/gem/:id					controllers.GemController.deleteGem(id: Long)

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gemStore">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/normalize.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/app.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/products.js"></script>
+  </head>
+
+  <body ng-controller="StoreController as store">
+    <!--  Store Header  -->
+    <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">– an Angular store –</h2>
+    </header>
+    <div ng-controller="ButtonController as button">
+    <div class="container" style="max-width: 500px">
+    <button class="btn btn-lg btn-primary btn-block" ng-click="button.press()" type="button" style="margin-bottom: 15px">{{'Create a new gem'}}</button>
+	</div>
+	<div class="container" ng-show="button.isPressed()" style="max-width: 500px">
+	<div class="row">
+	<div class="panel panel-primary">
+	<div class="panel-heading lead text-primary">{{'Submit a Gem'}}</div>
+	<form name="gemForm" ng-submit="store.addGem(store.currentGem)" type="form" novalidate>
+	<div class="form-group">
+	    <fieldset>
+	      	<input ng-model="store.currentGem.name" type="text" class="form-control" placeholder="Name" title="Name" required>
+	      	</input>
+	    </fieldset>
+	    <fieldset>
+	      	<textarea ng-model="store.currentGem.description" type="text" class="form-control" placeholder="Write a description for the gem." title="Description" required>
+	      	</textarea>
+	    </fieldset>
+	    <fieldset>
+	      	<input ng-model="store.currentGem.shine" type="number" class="form-control" placeholder="Shine value" title="Shine" required>
+	  		</input>
+	    </fieldset>
+	    <fieldset>
+	    	<input ng-model="store.currentGem.price" type="number" class="form-control" placeholder="Price" title="Price" required>
+	    	</input>
+	    </fieldset>
+	    <fieldset>
+	    	<input ng-model="store.currentGem.rarity" type="number" class="form-control" placeholder="Rarity value" title="Rarity" required>
+	    	</input>
+	    </fieldset>
+	    <fieldset>
+	    	<input ng-model="store.currentGem.color" type="text" class="form-control" placeholder="Color" title="Color" required>
+	    	</input>
+	    </fieldset>
+	    <fieldset>
+	    	<input ng-model="store.currentGem.faces" type="number" class="form-control" placeholder="Number of faces" title="Faces" required>
+	    	</input>
+	    </fieldset>
+	    <fieldset>
+	      	<input type="submit" class="btn btn-primary pull-right" value="Submit Gem">
+	  		</input>
+	    </fieldset>
+    </div>
+  	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+    <!--  Products Container  -->
+    <div class="container" style="max-width: 500px">
+      <!--  Product Container  -->
+      	<div class="row" ng-controller="ButtonController as edit" ng-repeat="product in store.products">
+        	<div class="panel panel-info" >
+        		<div class="panel-heading lead">{{product.name + ' Gem'}}
+        		<button class="btn btn-sm btn-danger pull-right" type="button" style="margin-left: 10px" ng-click="store.deleteGem(product.id)">{{'Delete'}}</button>
+        		<button class="btn btn-sm btn-warning pull-right" type="button" ng-click="edit.press()">{{'Edit'}}</button>
+        		<em class="label label-success center-block" style="margin-top: 10px" >{{product.price | currency}}</em>
+        		</div>
+        	<!-- Image Gallery  -->
+        	<product-gallery></product-gallery>
+        	<!-- Product Tabs  -->
+        	<product-tabs></product-tabs>
+        	</div>
+        	<div class="panel panel-warning" ng-show="edit.isPressed()">
+			<div class="panel-heading lead">{{'Edit ' + product.name}}</div>
+			<form name="gemForm" ng-submit="store.updateGem(product)" type="form" novalidate>
+			<div class="form-group">
+			    <fieldset>
+			      	<input ng-model="product.name" type="text" class="form-control" placeholder="Name" title="Name" required>
+			      	</input>
+			    </fieldset>
+			    <fieldset>
+			      	<textarea ng-model="product.description" type="text" class="form-control" placeholder="Write a description for the gem." title="Description" required>
+			      	</textarea>
+			    </fieldset>
+			    <fieldset>
+			      	<input ng-model="product.shine" type="number" class="form-control" placeholder="Shine value" title="Shine" required>
+			  		</input>
+			    </fieldset>
+			    <fieldset>
+			    	<input ng-model="product.price" type="number" class="form-control" placeholder="Price" title="Price" required>
+			    	</input>
+			    </fieldset>
+			    <fieldset>
+			    	<input ng-model="product.rarity" type="number" class="form-control" placeholder="Rarity value" title="Rarity" required>
+			    	</input>
+			    </fieldset>
+			    <fieldset>
+			    	<input ng-model="product.color" type="text" class="form-control" placeholder="Color" title="Color" required>
+			    	</input>
+			    </fieldset>
+			    <fieldset>
+			    	<input ng-model="product.faces" type="number" class="form-control" placeholder="Number of faces" title="Faces" required>
+			    	</input>
+			    </fieldset>
+			    <fieldset>
+			      	<input type="submit" class="btn btn-warning pull-right" value="Submit changes">
+			  		</input>
+			    </fieldset>
+		    </div>
+		  	</form>
+			</div>
+			</div>
+      	</div>
+  </body>
+</html>
