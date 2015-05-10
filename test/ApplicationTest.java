@@ -1,9 +1,7 @@
-import static org.fest.assertions.Assertions.assertThat;
-import static play.test.Helpers.contentType;
+import models.Gem;
+import models.GemList;
 
 import org.junit.Test;
-
-import play.twirl.api.Content;
 
 
 /**
@@ -15,16 +13,12 @@ import play.twirl.api.Content;
 public class ApplicationTest {
 
     @Test
-    public void simpleCheck() {
-        int a = 1 + 1;
-        assertThat(a).isEqualTo(2);
+    public void BSTinitialCheck() {
+        GemList test = new GemList();
+        Gem gArray[] = test.getAllGems();
+        for(Gem g : gArray){
+        	System.out.println(g.getName());
+        }
     }
-
-    @Test
-    public void renderTemplate() {
-        Content html = views.html.index.render();
-        assertThat(contentType(html)).isEqualTo("text/html");
-    }
-
 
 }

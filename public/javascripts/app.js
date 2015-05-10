@@ -1,10 +1,11 @@
 (function() {
   var app = angular.module('gemStore', ['store-directives']);
   
-  app.controller('StoreController', [ '$http', function($http){
+  app.controller('StoreController',[ '$http', function($http){
 	  var store = this;
 	  store.products = [];
 	  store.currentGem = {};
+	  store.review = {};
 	  $http.get('/gems').success(function(data){
 		  store.products = data;
 	  });
@@ -14,6 +15,7 @@
 			  store.products = data;
 		  });
 		  store.currentGem = {};
+		  store.review = {};
 	  };
 	  
 	  store.addGem = function(newGem){
@@ -32,6 +34,13 @@
 		  $http.delete('/gem/' + id).success(function(data){
 			  store.refresh();
 		  });
+	  };
+	  
+	  store.addReview = function(product) {
+		  store.review.createdOn = Date.now();
+		  product.reviews.push(store.review);
+	      store.review = {};
+	      store.updateGem(product);
 	  };
   }]);
   

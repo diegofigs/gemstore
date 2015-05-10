@@ -1,0 +1,41 @@
+<!-- Reviews Search Bar -->
+<search-bar></search-bar>
+
+<!--  Product Reviews List -->
+<ul>
+  <li ng-repeat="review in product.reviews | filter: query">
+    <blockquote>
+      <strong>{{review.stars}} Stars</strong>
+      {{review.body}}
+      <cite class="clearfix">—{{review.author}} on {{review.createdOn | date }}</cite>
+    </blockquote>
+  </li>
+</ul>
+
+<!--  Review Form -->
+<form name="reviewForm" ng-submit="store.addReview(product)">
+
+  <!--  Live Preview -->
+  <blockquote >
+    <strong>{{store.review.stars}} Stars</strong>
+    {{store.review.body}}
+    <cite class="clearfix">—{{store.review.author}}</cite>
+  </blockquote>
+
+  <!--  Review Form -->
+  <h4>Submit a Review</h4>
+  <fieldset class="form-group">
+    <select ng-model="store.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+      <option value>Rate the Product</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="store.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <input ng-model="store.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+  </fieldset>
+  <fieldset class="form-group">
+    <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+  </fieldset>
+</form>

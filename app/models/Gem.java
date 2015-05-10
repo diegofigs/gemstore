@@ -10,6 +10,7 @@ public class Gem implements Comparable<Gem>{
 	private int rarity;
 	private String color;
 	private int faces;
+	private Review[] reviews;
 	
 	public long getId(){
 		return id;
@@ -83,6 +84,14 @@ public class Gem implements Comparable<Gem>{
 		this.faces = faces;
 	}
 	
+	public Review[] getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Review[] reviews) {
+		this.reviews = reviews;
+	}
+
 	public String toString(){
 		return "(" + this.id + ", " + this.name + ", " + this.description
 				+ ", " + this.shine + ", " + this.price + ", " + this.rarity

@@ -14,6 +14,13 @@
         templateUrl: "assets/html/product-specs.html"
       };
     });
+    
+    app.directive("productReviews", function() {
+        return {
+          restrict: 'E',
+          templateUrl: "/assets/html/product-reviews.html"
+        };
+    });
 
     app.directive("productTabs", function() {
       return {
@@ -46,5 +53,12 @@
         },
         controllerAs: "gallery"
       };
+    });
+    
+    app.directive("searchBar", function() {
+    	return {
+    		restrict: "E",
+    		templateUrl: "assets/html/search-bar.html"
+    	};
     });
   })();
