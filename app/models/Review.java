@@ -4,7 +4,7 @@ public class Review {
 	int stars;
 	String body;
 	String author;
-	String createdOn;
+	double createdOn;
 	
 	public int getStars() {
 		return stars;
@@ -24,10 +24,10 @@ public class Review {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getCreatedOn() {
+	public double getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(String createdOn) {
+	public void setCreatedOn(double createdOn) {
 		this.createdOn = createdOn;
 	}
 }

@@ -35,7 +35,18 @@ public class GemList {
 		azurite.setColor("#CCC");
 		azurite.setFaces(14);
 		azurite.setImages(images);
-		azurite.setReviews(new Review[0]);
+		Review rev1 = new Review();
+		rev1.setStars(5);
+		rev1.setBody("I love this gem!");
+		rev1.setAuthor("joe@example.org");
+		rev1.setCreatedOn(1431328350752.0);
+		Review rev2 = new Review();
+		rev2.setStars(1);
+		rev2.setBody("This gem sucks.");
+		rev2.setAuthor("tim@example.org");
+		rev2.setCreatedOn(1431328350752.0);
+		Review[] revs = { rev1, rev2 };
+		azurite.setReviews(revs);
 		gemList.add(azurite.getName(), azurite);
 		// Second gem
 		Gem bloodstone = new Gem();
@@ -48,7 +59,18 @@ public class GemList {
 		bloodstone.setColor("#EEE");
 		bloodstone.setFaces(12);
 		bloodstone.setImages(images2);
-		bloodstone.setReviews(new Review[0]);
+		Review rev3 = new Review();
+		rev3.setStars(3);
+		rev3.setBody("I think this gem was just OK, could honestly use more shine, IMO.");
+		rev3.setAuthor("JimmyDean@example.org");
+		rev3.setCreatedOn(1431328350752.0);
+		Review rev4 = new Review();
+		rev4.setStars(4);
+		rev4.setBody("Any gem with 12 faces is for me! ");
+		rev4.setAuthor("gemsRock@example.org");
+		rev4.setCreatedOn(1431328350752.0);
+		Review[] revs2 = { rev3, rev4 };
+		bloodstone.setReviews(revs2);
 		gemList.add(bloodstone.getName(), bloodstone);
 		// Third gem
 		Gem zircon = new Gem();
@@ -61,7 +83,23 @@ public class GemList {
 		zircon.setColor("#000");
 		zircon.setFaces(6);
 		zircon.setImages(images3);
-		zircon.setReviews(new Review[0]);
+		Review rev5 = new Review();
+		rev5.setStars(1);
+		rev5.setBody("This gem is WAY too expensive for its rarity value.");
+		rev5.setAuthor("turtleguyy@example.org");
+		rev5.setCreatedOn(1431328350752.0);
+		Review rev6 = new Review();
+		rev6.setStars(1);
+		rev6.setBody("BBW: High Shine != High Quality.");
+		rev6.setAuthor("LouisW407@example.org");
+		rev6.setCreatedOn(1431328350752.0);
+		Review rev7 = new Review();
+		rev7.setStars(1);
+		rev7.setBody("Don't waste your rubles!");
+		rev7.setAuthor("nat@example.org");
+		rev7.setCreatedOn(1431328350752.0);
+		Review[] revs3 = { rev5, rev6, rev7 };
+		zircon.setReviews(revs3);
 		gemList.add(zircon.getName(), zircon);
 	}
 	
