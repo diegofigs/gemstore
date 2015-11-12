@@ -1,17 +1,13 @@
-# general
+# General
 *~
 *.log
 tmp
 dump
- 
-# Eclipse
+
+# IntelliJ IDEA
+.idea
 .settings
-.cache
-.project
-.classpath
-.scala_dependencies
-bin
- 
+
 # SBT
 dist
 project/play-fork-run.sbt
