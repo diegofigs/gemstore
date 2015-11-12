@@ -79,6 +79,11 @@ public class SortedCircularDoublyLinkedList<E extends Comparable<E>> implements 
 			else
 				throw new NoSuchElementException();
 		}
+
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException("remove() method is deprecated");
+		}
 	}
 	/**
 	 * The ReverseListIterator takes care of
